@@ -5,36 +5,26 @@ import Config from 'react-native-config'
 
 import {StackNavigator, TabNavigator} from 'react-navigation';
 
-import RecentChatsScreen from './screens/RecentChatsScreen';
-import ChatScreen from './screens/ChatScreen';
-
-class AllContactsScreen extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text>List of all contacts</Text>
-                <Button onPress={() => this.props.navigation.navigate('Chat', {user: 'Lucy'})} title="Chat with Lucy"/>
-            </View>
-        );
-    }
-}
+import BrowseScreen from './screens/BrowseScreen';
+import OptionScreen from './screens/OptionScreen';
+import CreateScreen from './screens/CreateScreen';
 
 const MainScreenNavigator = TabNavigator({
-    Recent: {
-        screen: RecentChatsScreen
+    Browse: {
+        screen: BrowseScreen
     },
-    All: {
-        screen: AllContactsScreen
+    Create: {
+        screen: CreateScreen
     }
-});
+}, {tabBarPosition: 'bottom'});
 
-const SimpleApp = StackNavigator({
-    Home: {
+const ApplicationNavigator = StackNavigator({
+    Primary: {
         screen: MainScreenNavigator
     },
-    Chat: {
-        screen: ChatScreen
+    Options: {
+        screen: OptionScreen
     }
 });
 
-AppRegistry.registerComponent('DemoProject', () => SimpleApp);
+AppRegistry.registerComponent('DemoProject', () => ApplicationNavigator);
