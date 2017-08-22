@@ -16,8 +16,11 @@ class Acronyms extends Migration
 		Schema::create('acronyms', function (Blueprint $table) {
         	$table->increments('id');
         	$table->string('acronym');
+			$table->string('meaning');
         	$table->string('description');
         	$table->integer('popularity');
+			$table->string('industry');
+			$table->boolean('safe');
 			$table->timestamps();
     	});
     }
