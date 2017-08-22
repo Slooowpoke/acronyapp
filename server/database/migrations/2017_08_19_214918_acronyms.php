@@ -19,7 +19,8 @@ class Acronyms extends Migration
 			$table->string('meaning');
         	$table->string('description');
         	$table->integer('popularity');
-			$table->string('industry');
+			$table->integer('industry_id')->unsigned();
+			$table->foreign('industry_id')->references('id')->on('industry');
 			$table->boolean('safe');
 			$table->timestamps();
     	});
