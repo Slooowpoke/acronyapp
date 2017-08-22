@@ -17,13 +17,17 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'api/v1'], function($app)
 {
-	$app->post('acronym','AcronymController@store');
 
-	$app->put('acronym/{id}','AcronymController@update');
-
-	$app->delete('acronym/{id}','AcronymController@destroy');
-
-	$app->get('acronym','AcronymController@index');
-
+	$app->get('acronym/search','AcronymController@search');
+	$app->post('acronym/save','AcronymController@store');
 	$app->get('acronym/{id}','AcronymController@fetch');
+
+	$app->get('industry/search','IndustryController@search');
+	$app->get('industry/save','IndustryController@store');
+
+
+	$app->get('feedback',function($app){
+		// the closure for the e-mail
+	});
+
 });
