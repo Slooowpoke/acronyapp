@@ -5,6 +5,9 @@ import Config from 'react-native-config'
 
 import AcronymInput from '../components/AcronymInput'
 
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 class CreateScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Create',
@@ -15,11 +18,21 @@ class CreateScreen extends React.Component {
     render() {
         return (
             <View>
-                <Text>List of all Tes</Text>
+				<Header />
 
+				<AcronymInput onChange={this.onInputChange}/>
+
+				<Footer />
             </View>
         );
     }
+
+	onInputChange(acronym, context){
+		// Search for context and acronym here
+		console.log(acronym);
+		console.log(context);
+		console.log("---");
+	}
 }
 
 
