@@ -14,6 +14,9 @@ import NP from '../helper/NetworkProvider'
 
 import AcronymInput from '../components/AcronymInput'
 
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
 class BrowseScreen extends React.Component {
     static navigationOptions = {
         title: 'Browse',
@@ -30,7 +33,7 @@ class BrowseScreen extends React.Component {
 
     componentWillMount() {
 		// Load all acronyms, change this later.
-        NP.index('acronym').then((response) => {
+        NP.search('acronym').then((response) => {
 
 			// Load the data for ListView
 			const ds = new ListView.DataSource({
@@ -43,18 +46,15 @@ class BrowseScreen extends React.Component {
     render() {
         return (
             <View>
-				<Button onPress={() => this.props.navigation.navigate('Options')} title="Options"/>
+				<Header />
 
 				<AcronymInput onChange={this.onInputChange}/>
 
-                <Text>{(this.state.data != null)
-                        ? "Data here"
-                        : "Data not here"}</Text>
-
                 {this.state.data != null
                     ? (<ListView dataSource={this.state.data} renderRow={(item) => <Text>{item.acronym}</Text>}/>)
-                    : (<Text>Data loading...</Text>)}
+                    : <Text></Text>}
 
+				<Footer />
             </View>
         );
     }
