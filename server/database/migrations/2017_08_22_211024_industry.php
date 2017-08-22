@@ -15,6 +15,8 @@ class Industry extends Migration
     {
 		Schema::create('industries', function (Blueprint $table) {
         	$table->increments('id');
+			$table->integer('acronym_id')->unsigned();
+			$table->foreign('acronym_id')->references('id')->on('acronyms');
         	$table->string('name');
 			$table->timestamps();
     	});
