@@ -13,12 +13,12 @@ class AcronymIndustry extends Migration
      */
     public function up()
     {
-		Schema::create('acronyms_industry', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('industry_id')->unsigned();
-            $table->foreign('industry_id')->references('id')->on('industry');
-            $table->integer('acronym_id')->unsigned();
-            $table->foreign('acronym_id')->references('id')->on('acronms');
+		Schema::create('acronym_industry', function (Blueprint $table) {
+
+            $table->integer('acronym_id')->unsigned()->nullable();
+            $table->foreign('acronym_id')->references('id')->on('acronyms')->onDelete('cascade');;
+			$table->integer('industry_id')->unsigned()->nullable();
+			$table->foreign('industry_id')->references('id')->on('industries')->onDelete('cascade');;
             $table->timestamps();
         });
 
