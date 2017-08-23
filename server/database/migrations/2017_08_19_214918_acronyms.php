@@ -18,6 +18,7 @@ class Acronyms extends Migration
         	$table->string('acronym');
 			$table->string('meaning');
         	$table->string('description');
+			$table->unique(['meaning', 'description']);
         	$table->integer('popularity');
 			$table->boolean('safe');
 			$table->timestamps();
