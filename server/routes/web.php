@@ -18,11 +18,11 @@ $app->get('/', function () use ($app) {
 $app->group(['prefix' => 'api/v1'], function($app)
 {
 
-	$app->get('acronym/search','AcronymController@search');
+	$app->get('acronym/search/{terms}','AcronymController@search');
 	$app->post('acronym/save','AcronymController@store');
 	$app->get('acronym/{id}','AcronymController@fetch');
 
-	$app->get('industry/search','IndustryController@search');
+	$app->get('industry/search/{terms}','IndustryController@search');
 	$app->get('industry/save','IndustryController@store');
 
 
