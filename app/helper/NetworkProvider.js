@@ -8,8 +8,8 @@ class NetworkProvider {
 		return this.netRequest(Config.API_URL + '/' + endpoint + '/' + id,'GET', null);
     }
 
-    static search(endpoint) {
-		return this.netRequest(Config.API_URL + '/' + endpoint + '/search','GET', null);
+    static search(endpoint, terms) {
+		return this.netRequest(Config.API_URL + '/' + endpoint + '/search/'+ terms,'GET', null);
     }
 
     static store(endpoint, data) {
