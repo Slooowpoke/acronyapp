@@ -17,33 +17,32 @@ class IndustryController extends Controller{
     {
     }
 
-	public function store(Request $request){
+	public function search(Request $request, $terms){
+		$industries = Industry::all();
 
-    	$industry = Industry::create($request->all());
-
-    	return response()->json($acronym);
+		return $industries;
 	}
 
-	public function update(Request $request, $id){
+	public function store(Request $request){
 
-    	$industry  = Industry::find($id);
-    	$industry->name = $request->input('name');
-    	$industry->save();
+		// Validate industry input
+		$this->validate($request, [
+		   'name' => 'required|string|max:255',
+	   ]);
+
+		// Create the industry taxonomy
+    	$industry = Industry::create($request->all());
 
     	return response()->json($industry);
 	}
 
+
 	public function destroy($id){
+		// Needs special auth
     	$industry  = Industry::find($id);
     	$industry->delete();
 
     	return response()->json('Deleted.');
-	}
-
-	public function index(){
-    	$industries  = Industry::all();
-
-    	return response()->json($industries);
 	}
 
 	public function fetch(Request $request,$id){
