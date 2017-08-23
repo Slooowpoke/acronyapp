@@ -8,9 +8,9 @@ class Acronym extends Model
  	protected $fillable = ['acronym','meaning', 'description', 'popularity'];
 
 	public function industries()
-  	{
-	  return $this->hasMany('App\Industry', 'id');
-  	}
+    {
+        return $this->belongsToMany('App\Industry')->orderBy('created_at','DESC')->withTimestamps();
+    }
 
 }
 ?>
