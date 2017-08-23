@@ -15,12 +15,18 @@ class CreateScreen extends React.Component {
 		tabBarPosition: 'bottom'
 	};
 
+	state = {
+		acronym:'',
+		meaning:'',
+		context:'',
+	}
+
     render() {
         return (
             <View>
 				<Header />
 
-				<AcronymInput onChange={this.onInputChange}/>
+				<AcronymInput onChange={this.onInputChange} meaningInput={true}/>
 
 				<Footer />
             </View>
