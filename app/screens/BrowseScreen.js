@@ -17,6 +17,9 @@ import AcronymInput from '../components/AcronymInput'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+import Suggestions '../components/Suggestions'
+
+
 class BrowseScreen extends React.Component {
     static navigationOptions = {
         title: 'Browse',
@@ -50,9 +53,7 @@ class BrowseScreen extends React.Component {
 
 				<AcronymInput onChange={this.onInputChange}/>
 
-                {this.state.data != null
-                    ? (<ListView dataSource={this.state.data} renderRow={(item) => <Text>{item.acronym}</Text>}/>)
-                    : <Text></Text>}
+				<Suggestions></Suggestions>
 
 				<Footer />
             </View>
