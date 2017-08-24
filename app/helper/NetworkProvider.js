@@ -5,11 +5,11 @@ class NetworkProvider {
     // eg: in the case of needing authentication
 
     static fetch(endpoint, id) {
-		return this.netRequest(Config.API_URL + '/' + endpoint + '/' + id,'GET', null);
+		return this.netRequest(Config.API_URL + '/' + endpoint + '/','GET', id);
     }
 
-    static search(endpoint, terms) {
-		return this.netRequest(Config.API_URL + '/' + endpoint + '/search/'+ terms,'GET', null);
+    static search(endpoint, acronym,context) {
+		return this.netRequest(Config.API_URL + `/` + endpoint +`/search/${acronym}/context/${context}`,'GET', null);
     }
 
     static store(endpoint, data) {
@@ -26,13 +26,20 @@ class NetworkProvider {
             },
 		}
 
-		if(data) parameters.body = JSON.stringify(data);
+		if(data){
+			parameters.body = JSON.stringify(data);
+		}
 
 		return fetch(url, {
 			parameters
-		}).then((response) => response.json()).then((json) => {
+		}).then((response) => {
+			console.log(response);
+			return response.json();
+		}).then((json) => {
+			console.log(json);
 			return json;
 		}).catch((error) => {
+			console.log("Error");
 			console.error(error);
 		});
 	}
