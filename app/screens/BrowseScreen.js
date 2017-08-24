@@ -66,6 +66,30 @@ class BrowseScreen extends React.Component {
 		console.log(context);
 		console.log("---");
 	}
+    search(acronym,context) {
+		// Load all acronyms, change this later.
+		NP.search('acronym',acronym,context).then((response) => {
+
+			// Load the data for ListView
+			const ds = new ListView.DataSource({
+				rowHasChanged: (r1, r2) => r1 !== r2
+			});
+			this.setState({data: ds.cloneWithRows(response)});
+		});
+    }
+
+    onInputChange(acronym, context) {
+        // Search for context and acronym here
+        console.log(acronym);
+        console.log(context);
+        console.log("---");
+		clearTimeout(this.state.requestTimeout);
+        let timeout = setTimeout(() => {
+            this.search(acronym,context)
+        }, 2000);
+
+        this.setState({requestTimeout: timeout});
+    }
 }
 
 const styles = StyleSheet.create({
