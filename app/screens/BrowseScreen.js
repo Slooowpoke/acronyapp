@@ -17,8 +17,7 @@ import AcronymInput from '../components/AcronymInput'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-import Suggestions '../components/Suggestions'
-
+import Suggestions from '../components/Suggestions'
 
 class BrowseScreen extends React.Component {
     static navigationOptions = {
@@ -27,7 +26,8 @@ class BrowseScreen extends React.Component {
     };
 
     state = {
-        data: null
+        data: null,
+        requestTimeout: null
     }
 
     constructor() {
@@ -35,37 +35,23 @@ class BrowseScreen extends React.Component {
     }
 
     componentWillMount() {
-		// Load all acronyms, change this later.
-        NP.search('acronym').then((response) => {
-
-			// Load the data for ListView
-			const ds = new ListView.DataSource({
-				rowHasChanged: (r1, r2) => r1 !== r2
-			});
-			this.setState({data:ds.cloneWithRows(response)});
-        });
+        this.search();
     }
 
     render() {
         return (
             <View>
-				<Header />
+                <Header/>
 
-				<AcronymInput onChange={this.onInputChange}/>
+                <AcronymInput onChange={this.onInputChange.bind(this)}/>
 
-				<Suggestions></Suggestions>
+                <Suggestions></Suggestions>
 
-				<Footer />
+                <Footer/>
             </View>
         );
     }
 
-	onInputChange(acronym, context){
-		// Search for context and acronym here
-		console.log(acronym);
-		console.log(context);
-		console.log("---");
-	}
     search(acronym,context) {
 		// Load all acronyms, change this later.
 		NP.search('acronym',acronym,context).then((response) => {
