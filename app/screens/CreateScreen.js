@@ -19,6 +19,7 @@ class CreateScreen extends React.Component {
 		acronym:'',
 		meaning:'',
 		context:'',
+
 	}
 
     render() {
@@ -26,14 +27,16 @@ class CreateScreen extends React.Component {
             <View>
 				<Header />
 
-				<AcronymInput onChange={this.onInputChange} meaningInput={true}/>
+				<AcronymInput onChange={this.onInputChange.bind(this)} meaningInput={true}/>
+
+				<Button/>
 
 				<Footer />
             </View>
         );
     }
 
-	onInputChange(acronym, context){
+	onInputChange(acronym, context,meaning){
 		// Search for context and acronym here
 		console.log(acronym);
 		console.log(context);
