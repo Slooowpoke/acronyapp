@@ -20,7 +20,14 @@ class AcronymController extends Controller{
     {
     }
 
-	public function search(Request $request, $terms){
+	public function search(Request $request, $terms,$context){
+		$acronyms  = Acronym::all();
+
+
+    	return response()->json(["terms" => $terms, "context" => $context]);
+	}
+
+	public function popular(Request $request){
 		$acronyms  = Acronym::all();
 
     	return response()->json($acronyms);
@@ -29,13 +36,6 @@ class AcronymController extends Controller{
 	public function store(Request $request){
 
 		// Validate the acronym before saving it
-	// 	$this->validate($request, [
-	// 	   'acronym' => 'required|string|max:255',
-	// 	   'meaning' => 'required|string|max:255|uniquewith',
-	// 	   'description' => 'required|string|max:512',
-	// 	   'industry[*]name' => 'required|string|max:255',
-	//    ]);
-
 		$validator = Validator::make($request->all(), [
 		   'acronym' => 'required|string|max:255',
 		   'meaning' => 'required|string|max:255',
