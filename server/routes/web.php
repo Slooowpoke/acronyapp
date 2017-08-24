@@ -17,8 +17,8 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'api/v1'], function($app)
 {
-
-	$app->get('acronym/search/{terms}','AcronymController@search');
+	$app->get('acronym/search','AcronymController@popular');
+	$app->get('acronym/search/{terms}/context/{context}','AcronymController@search');
 	$app->post('acronym/save','AcronymController@store');
 	$app->get('acronym/{id}','AcronymController@fetch');
 
