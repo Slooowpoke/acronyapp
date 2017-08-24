@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Button, TextInput, ListView} from 'react-native';
 
 import Config from 'react-native-config'
 import NP from '../helper/NetworkProvider'
 
 class Suggestions extends React.Component {
 
-    state = {data:[]};
+    state = {data:null};
 
     componentWillMount() {
 		// Fetch the data
-		NP.search('acronym').then((response) => {
+		NP.search('acronym', 'terms').then((response) => {
 
 			// Load the data for ListView
 			const ds = new ListView.DataSource({
