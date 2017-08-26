@@ -9,6 +9,9 @@ import BrowseScreen from './screens/BrowseScreen';
 import OptionScreen from './screens/OptionScreen';
 import CreateScreen from './screens/CreateScreen';
 
+global.industries = [];
+global.industries.push({name: 'General'});
+
 const MainScreenNavigator = TabNavigator({
     Browse: {
         screen: BrowseScreen
