@@ -127,6 +127,16 @@ class Suggestions extends React.Component {
 		}
 
 	}
+
+    renderItem(item) {
+        return (
+            <View style={styles.suggestion}>
+                <Text>{item.acronym}</Text>
+
+            </View>
+
+        )
+    }
 }
 
 export default Suggestions;
