@@ -16,6 +16,7 @@ import AcronymInput from '../components/AcronymInput'
 
 import Footer from '../components/Footer'
 
+import NP from '../helper/NetworkProvider'
 
 import Icon from 'react-native-vector-icons/Ionicons';
 const {width, height} = Dimensions.get('window');
