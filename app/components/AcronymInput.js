@@ -153,6 +153,11 @@ class AcronymInput extends React.Component {
     }
 }
 
+const styles = StyleSheet.create({
+	container:{
+		marginLeft:20,
+		marginRight:20,
+	},
     acronym: {
         backgroundColor: '#fff',
 		textAlign:'center',
