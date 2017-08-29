@@ -9,11 +9,20 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text onPress={() => this.props.navigation.navigate('Options')}>Help and Feedback</Text>
+            <View style={styles.footer}>
+                <Text style={styles.feedback} onPress={() => this.props.navigation.navigate('Options')}>Help and Feedback</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+	footer:{
+		marginBottom:15,
+	},
+	feedback:{
+		textAlign:'center',
+	}
+});
 
 export default Footer;
