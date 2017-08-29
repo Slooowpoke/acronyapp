@@ -33,7 +33,11 @@ class AcronymInput extends React.Component {
     render() {
         return (
             <View>
-                <Text>Please enter the acronym:</Text>
+                <TextInput style={styles.acronym} placeholder="B.T.B"
+					placeholderTextColor="#eee" autoCapitalize={"characters"}
+					onChangeText={(acronym) => this.onChange(acronym, this.state.context, this.state.meaning, this.state.description)} value={this.state.acronym}
+					multiline={false}  maxLength={25} />
+				<View>
                 <TextInput style={{
                     height: 40,
                     borderColor: 'gray',
@@ -60,6 +64,15 @@ class AcronymInput extends React.Component {
 
     onChange(acronym, context,meaning) {
         this.setState({acronym: acronym,context: context,meaning: meaning});
+        console.log(acronym.length);
+        console.log(this.state.acronym.length);
+
+		acronym = acronym.replace(/[&\/\\#,+()$~%.'":*?<>{}\s]/g,'');
+		acronym = this.format(acronym, 1).join('.');
+
+        if (acronym.length < this.state.acronym.length) {
+            acronym = acronym.substring(0, acronym.length - 1);
+        }
 
 		if(this.props.meaningInput){
 			this.props.onChange(this.state.acronym, this.state.context, this.state.meaning);
@@ -69,4 +82,11 @@ class AcronymInput extends React.Component {
     }
 }
 
+    acronym: {
+        backgroundColor: '#fff',
+		textAlign:'center',
+		fontSize:34,
+		marginTop:50,
+		fontFamily: 'Ubuntu',
+    },
 export default AcronymInput;
