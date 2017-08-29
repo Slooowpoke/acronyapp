@@ -27,6 +27,35 @@ class Suggestions extends React.Component {
 			this.setState({data:ds.cloneWithRows(response)});
         });
 	}
+            this.search(nextProps.acronym, nextProps.context);
+    search(acronym, context) {
+        if (acronym != null && context != null && acronym != "" && context != "") {
+			this.state.sections = null;
+            clearTimeout(this.state.requestTimeout);
+
+            let timeout = setTimeout(() => {
+
+                NP.search('acronym', acronym, context).then((response) => {
+                    console.log(response);
+
+                    this.setState({data: response});
+
+					let newSections = [];
+					for(let i = 0; i < this.state.data.length; i++){
+						newSections.push({
+							title: this.state.data[i].meaning,
+							content: this.state.data[i].description,
+							example: this.state.data[i].context,
+						})
+						console.log(this.state.data[i]);
+					}
+					this.setState({sections: newSections});
+                });
+            }, 2000);
+
+            this.setState({requestTimeout: timeout});
+        }
+    }
 
     render() {
         return (
