@@ -24,7 +24,7 @@ class AcronymController extends Controller{
 		$acronyms  = Acronym::all();
 
 
-    	return response()->json(["terms" => $terms, "context" => $context]);
+    	return response()->json($acronyms);
 	}
 
 	public function popular(Request $request){
