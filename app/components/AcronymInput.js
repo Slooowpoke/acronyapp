@@ -49,28 +49,35 @@ class AcronymInput extends React.Component {
 
 				</View>
 
-                <TextInput style={{
-                    height: 40,
-                    borderColor: 'gray',
-                    borderWidth: 1
-                }} onChangeText={(acronym) => this.onChange(acronym, this.state.context, this.state.meaning)} value={this.state.acronym} multiline={false}/>
+				{this.props.meaningInput && this.renderExtraInputs()}
 
-                <Text>Please enter the context:</Text>
-                <TextInput style={{
-                    height: 40,
-                    borderColor: 'gray',
-                    borderWidth: 1
-                }} onChangeText={(context) => this.onChange(this.state.acronym, context, this.state.meaning)} value={this.state.context} multiline={true}/>
-
-				<Text>Please enter the meaning:</Text>
-				{this.props.meaningInput
-                    ? (<TextInput style={{
-                        height: 40,
-                        borderColor: 'gray',
-                        borderWidth: 1
-                    }} onChangeText={(meaning) => this.onChange(this.state.acronym, this.state.context, meaning)} value={this.state.meaning} multiline={true}/>): <View></View>}
             </View>
         );
+    }
+
+    renderExtraInputs() {
+        return (
+            <View>
+
+				<Text style={{fontFamily: 'Ubuntu'}}>What does the acronym stand for?</Text>
+                <TextInput style={{
+                    height: 40,
+					marginTop:10,
+					fontFamily: 'Ubuntu'
+                }} onChangeText={(meaning) => this.onChange(this.state.acronym, this.state.context, meaning, this.state.description)}
+				 value={this.state.meaning} multiline={true}
+			 	 placeholder="Be The Best" placeholderTextColor="#ddd"/>
+
+                <TextInput style={{
+                    height: 100,
+					marginTop:5,
+					fontFamily: 'Ubuntu'
+                }} onChangeText={(description) => this.onChange(this.state.acronym, this.state.context, this.state.meaning, description)}
+				 value={this.state.description} multiline={true}
+			     placeholder="Description" placeholderTextColor="#ddd"/>
+
+			</View>
+        )
     }
 
     onChange(acronym, context,meaning) {
@@ -85,10 +92,6 @@ class AcronymInput extends React.Component {
             acronym = acronym.substring(0, acronym.length - 1);
         }
 
-		if(this.props.meaningInput){
-			this.props.onChange(this.state.acronym, this.state.context, this.state.meaning);
-		}else{
-			this.props.onChange(this.state.acronym, this.state.context);
 		if(this.state.context != context && acronym){
 			// context has changed, check if they are typing anything that looks like the acronym
 
@@ -104,6 +107,27 @@ class AcronymInput extends React.Component {
 			// Check for dotted acronym
 			temp = new RegExp(lowercaseAcronym + " ", 'gim');
 			context = context.replace(temp, acronym);
+		}
+
+		if(this.state.meaning != meaning && acronym){
+
+			let letters = acronym.split(".");
+			meaning = meaning.replace(/^[a-z]/g, letters[0]);
+
+			let totalSpaces = null;
+			if(/([\s]+)/g.test(meaning)){
+				totalSpaces = meaning.match(/([\s]+)/g).length;
+			}
+
+			// Then the meaning has changed and we can regex the acronym onto it
+			// Count spaces
+			if(/\s$/g.test(meaning)){
+				if(totalSpaces != null && totalSpaces < letters.length){
+					meaning = meaning.replace(/\s$/g, ' ' + letters[totalSpaces]);
+				}
+
+			}
+
 		}
     }
 }
