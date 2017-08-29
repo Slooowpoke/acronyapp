@@ -139,4 +139,35 @@ class Suggestions extends React.Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        marginLeft: 20,
+        marginRight: 20
+    },
+    header: {
+        marginTop: 20,
+        marginBottom: 10,
+        paddingBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd'
+    },
+    suggestion: {
+        paddingTop: 10,
+        paddingBottom: 10,
+		paddingLeft:5,
+		paddingRight:5,
+		backgroundColor: "#fefefefe",
+		flexDirection:'row',
+		justifyContent:'space-between',
+		fontFamily: 'Ubuntu',
+    },
+	suggestionInner : {
+		paddingTop: 5,
+        paddingBottom: 5,
+		paddingLeft:5,
+		backgroundColor: "#fefefefe",
+		fontFamily: 'Ubuntu',
+	}
+});
+
 export default Suggestions;
