@@ -14,7 +14,16 @@ import NP from '../helper/NetworkProvider'
 
 class Suggestions extends React.Component {
 
-    state = {data:null};
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            data: null,
+            requestTimeout: null,
+			sections:null,
+        };
+    }
     _renderHeader(section) {
         return (
             <View style={styles.suggestion}>
