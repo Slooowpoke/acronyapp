@@ -77,12 +77,13 @@ class App extends React.Component {
     render() {
         return (
             <View style={{flex:1}}>
-                <StatusBarAlert
+				<StatusBarAlert
 					visible={global.alerts[0].visibility}
 					message={global.alerts[0].message}
 					backgroundColor="#3CC29E"
 					color="white"
-					onPress={() => this.closeAlert()}/>
+					onPress={() => this.closeAlert()}
+					statusbarHeight={global.alerts[0].visibility ? 20 : 0}/>
                 <ApplicationNavigator ref={nav => {
                     this.navigator = nav;
                 }}/>
