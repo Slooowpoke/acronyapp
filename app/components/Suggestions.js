@@ -58,6 +58,8 @@ class Suggestions extends React.Component {
 			this.setState({data:ds.cloneWithRows(response)});
         });
 	}
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
         // Search
         if (nextProps.acronym != this.props.acronym || nextProps.context != this.props.context) {
@@ -101,7 +103,7 @@ class Suggestions extends React.Component {
         return (
             <View>
                 <View style={styles.header}>
-                    <Text style={{	fontFamily: 'Ubuntu',}}>Suggestions</Text>
+                    <Text style={{	fontFamily: 'Ubuntu'}}>Suggestions</Text>
                 </View>
             </View>
         );
