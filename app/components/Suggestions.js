@@ -29,11 +29,20 @@ class Suggestions extends React.Component {
 			sections:null,
         };
     }
+
     _renderHeader(section) {
         return (
             <View style={styles.suggestion}>
                 <Text style={styles.headerText}>{section.title}</Text>
 				<Icon name="ios-arrow-down-outline" size={30} color="#000" />
+            </View>
+        );
+    }
+
+    _renderContent(section) {
+        return (
+            <View style={styles.suggestionInner}>
+                <Text>{section.content}</Text>
             </View>
         );
     }
