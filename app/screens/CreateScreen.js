@@ -86,20 +86,12 @@ class CreateScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: '#fff',
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5
+        flexGrow: 1,
+        justifyContent: 'space-between',
     }
 });
 
