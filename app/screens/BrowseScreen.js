@@ -53,13 +53,16 @@ class BrowseScreen extends React.Component {
 
     render() {
         return (
+            <ScrollView style={styles.scroll}>
+                <View style={[styles.container, {minHeight:global.dimensions.height}]}>
+                    <View>
+                        <AcronymInput onChange={this.onInputChange.bind(this)}/>
 
-                <AcronymInput onChange={this.onInputChange.bind(this)}/>
-
-                <Suggestions></Suggestions>
-
-                <Footer/>
-            </View>
+                        <Suggestions acronym={this.state.acronym} context={this.state.context}></Suggestions>
+                    </View>
+                    <Footer/>
+                </View>
+            </ScrollView>
         );
     }
 
