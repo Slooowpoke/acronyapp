@@ -49,7 +49,36 @@ class CreateScreen extends React.Component {
 		console.log("---");
 	}
 }
+    saveAcronym() {
+        // We can only do this if all the data is here
+        if (this.state.meaning && this.state.context && this.state.acronym && this.state.description) {
 
+            // We have all the data that we need
+            // Proceed with saving
+
+            // Create our acronym
+            let data = {
+                acronym: this.state.acronym,
+                context: this.state.context,
+                meaning: this.state.meaning,
+                description: this.state.description,
+                industries: global.industries
+            };
+            console.log("Saving");
+
+            // Save the acronym
+            NP.store('acronym', data).then((response) => {
+                console.log(response);
+
+                // After we have saved the acronym we can do fun things here.
+                // Such as showing a toast
+
+                this.setState({clearInput: true});
+
+            });
+
+        }
+    }
 
 const styles = StyleSheet.create({
     container: {
