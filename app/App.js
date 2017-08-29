@@ -38,7 +38,13 @@ const MainScreenNavigator = TabNavigator({
     Create: {
         screen: CreateScreen
     }
-}, {tabBarPosition: 'bottom'});
+}, {
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+        showLabel: false,
+        showIcon: true
+    }
+});
 
 const ApplicationNavigator = StackNavigator({
     Primary: {
