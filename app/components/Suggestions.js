@@ -12,6 +12,11 @@ import {
 import Config from 'react-native-config'
 import NP from '../helper/NetworkProvider'
 
+import Accordion from 'react-native-collapsible/Accordion';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import * as Progress from 'react-native-progress';
+
 class Suggestions extends React.Component {
 
 
