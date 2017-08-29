@@ -38,6 +38,17 @@ class AcronymInput extends React.Component {
 					onChangeText={(acronym) => this.onChange(acronym, this.state.context, this.state.meaning, this.state.description)} value={this.state.acronym}
 					multiline={false}  maxLength={25} />
 				<View>
+
+					<View style={{backgroundColor: 'rgba(0,0,0,0)'}}>
+						<TextInput style={{
+					  	  height: 40,
+					  	  backgroundColor: 'rgba(0,0,0,0)',
+					  }} style={styles.context} placeholder="Context eg: Remeber the rule, B.T.B" placeholderTextColor="#ddd"  onChangeText={(context) => this.onChange(this.state.acronym, context, this.state.meaning, this.state.description)}
+						value={this.state.context} multiline={false}  maxLength={50} />
+					</View>
+
+				</View>
+
                 <TextInput style={{
                     height: 40,
                     borderColor: 'gray',
@@ -78,6 +89,21 @@ class AcronymInput extends React.Component {
 			this.props.onChange(this.state.acronym, this.state.context, this.state.meaning);
 		}else{
 			this.props.onChange(this.state.acronym, this.state.context);
+		if(this.state.context != context && acronym){
+			// context has changed, check if they are typing anything that looks like the acronym
+
+			let strippedAcronym = (acronym.replace(/[.]/g,'')).toLowerCase();
+			let lowercaseAcronym = acronym.toLowerCase();
+
+			// Append a space to them to check for only when its not part of another word.
+
+			// Check for undotted acronym
+			var temp = new RegExp(strippedAcronym + " ", 'gim');
+			context = context.replace(temp, acronym);
+
+			// Check for dotted acronym
+			temp = new RegExp(lowercaseAcronym + " ", 'gim');
+			context = context.replace(temp, acronym);
 		}
     }
 }
@@ -89,4 +115,11 @@ class AcronymInput extends React.Component {
 		marginTop:50,
 		fontFamily: 'Ubuntu',
     },
+	context:{
+		marginBottom:20,
+		fontFamily: 'Ubuntu',
+	},
+
+});
+
 export default AcronymInput;
