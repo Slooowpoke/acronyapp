@@ -105,6 +105,10 @@ class Suggestions extends React.Component {
                 <View style={styles.header}>
                     <Text style={{	fontFamily: 'Ubuntu'}}>Suggestions</Text>
                 </View>
+				{this.state.sections != null
+					? (<Accordion sections={this.state.sections} renderHeader={this._renderHeader} renderContent={this._renderContent}/>)
+					: (this.renderInProgress())}
+
             </View>
         );
     }
