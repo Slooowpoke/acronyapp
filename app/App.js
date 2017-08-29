@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
+import {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Button,
+    Dimensions
+} from 'react-native';
+
+// Import our config
 
 import Config from 'react-native-config'
 
