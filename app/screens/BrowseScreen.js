@@ -48,8 +48,8 @@ class BrowseScreen extends React.Component {
     }
 
     componentWillMount() {
-        this.search();
-    }
+		global.dimensions = {width, height} = Dimensions.get('window');
+	}
 
     render() {
         return (
