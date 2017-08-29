@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Button, TextInput, ListView} from 'react-native';
+import {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Button,
+    TextInput,
+    ListView
+} from 'react-native';
 
 import Config from 'react-native-config'
 import NP from '../helper/NetworkProvider'
