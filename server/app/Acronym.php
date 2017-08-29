@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acronym extends Model
 {
- 	protected $fillable = ['acronym','meaning', 'description', 'popularity'];
+ 	protected $fillable = ['acronym','meaning', 'context','description', 'popularity'];
 
 	public function industries()
     {
