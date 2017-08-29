@@ -50,13 +50,16 @@ class CreateScreen extends React.Component {
 
     render() {
         return (
+            <ScrollView style={styles.scroll}>
+                <View style={[styles.container, {minHeight:global.dimensions.height}]}>
 
-				<AcronymInput onChange={this.onInputChange.bind(this)} meaningInput={true}/>
+                    <AcronymInput onChange={this.onInputChange.bind(this)} meaningInput={true} clearInput={this.state.clearInput} resetClearInput={this.resetClearInput.bind(this)}/>
 
-				<Button/>
+                    <Button title="Save" onPress={this.saveAcronym.bind(this)}/>
 
-				<Footer />
-            </View>
+                    <Footer/>
+                </View>
+            </ScrollView>
         );
     }
 
