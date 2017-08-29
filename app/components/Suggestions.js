@@ -27,7 +27,16 @@ class Suggestions extends React.Component {
 			this.setState({data:ds.cloneWithRows(response)});
         });
 	}
+    shouldComponentUpdate(nextProps, nextState) {
+        // Search
+        if (nextProps.acronym != this.props.acronym || nextProps.context != this.props.context) {
             this.search(nextProps.acronym, nextProps.context);
+
+        }
+
+		this.props = nextProps;
+        return true;
+    }
     search(acronym, context) {
         if (acronym != null && context != null && acronym != "" && context != "") {
 			this.state.sections = null;
