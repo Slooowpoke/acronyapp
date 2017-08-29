@@ -42,13 +42,6 @@ class CreateScreen extends React.Component {
         );
     }
 
-	onInputChange(acronym, context,meaning){
-		// Search for context and acronym here
-		console.log(acronym);
-		console.log(context);
-		console.log("---");
-	}
-}
     saveAcronym() {
         // We can only do this if all the data is here
         if (this.state.meaning && this.state.context && this.state.acronym && this.state.description) {
@@ -79,6 +72,17 @@ class CreateScreen extends React.Component {
 
         }
     }
+
+    resetClearInput() {
+        this.setState({clearInput: false});
+    }
+
+    onInputChange(acronym, context, meaning, description) {
+        // Save the inputs to our state
+        this.setState({acronym: acronym, context: context, meaning: meaning, description: description});
+        console.log(this.state);
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
