@@ -37,6 +37,14 @@ class BrowseScreen extends React.Component {
 			showLabel: false,
 		}
 	};
+
+    constructor(props) {
+        super(props)
+		global.dimensions = {width, height} = Dimensions.get('window');
+
+        this.state = {
+            data: null
+        }
     }
 
     componentWillMount() {

@@ -36,12 +36,17 @@ class CreateScreen extends React.Component {
 		}
     };
 
-	state = {
-		acronym:'',
-		meaning:'',
-		context:'',
+    constructor(props) {
+        super(props)
 
-	}
+        this.state = {
+            acronym: null,
+            meaning: null,
+            context: null,
+            description: null,
+            clearInput: false
+        }
+    }
 
     render() {
         return (
