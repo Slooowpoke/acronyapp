@@ -57,7 +57,6 @@ class Suggestions extends React.Component {
 			});
 			this.setState({data:ds.cloneWithRows(response)});
         });
-	}
     }
 
     shouldComponentUpdate(nextProps, nextState) {
