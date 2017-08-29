@@ -76,20 +76,17 @@ class BrowseScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: '#fff',
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
+        flexGrow: 1,
+        justifyContent: 'space-between',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
+    scroll: {
+        flex: 1,
+        flexGrow: 1
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5
     }
 });
 
