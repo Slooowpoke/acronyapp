@@ -22,8 +22,14 @@ import BrowseScreen from './screens/BrowseScreen';
 import OptionScreen from './screens/OptionScreen';
 import CreateScreen from './screens/CreateScreen';
 
-global.industries = [];
-global.industries.push({name: 'General'});
+import StatusBarAlert from 'react-native-statusbar-alert'
+
+// Declare some globals, TODO check if these globals are pulled through or whether they have to be in the react instance first
+global.dimensions = {
+    width,
+    height
+} = Dimensions.get('window');
+global.suitableForWork = false;
 
 const MainScreenNavigator = TabNavigator({
     Browse: {
