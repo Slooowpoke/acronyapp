@@ -22,6 +22,14 @@ class AcronymInput extends React.Component {
 
     componentWillMount() {}
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.clearInput) {
+            this.setState({acronym: "", context: "", meaning: "", description: ""});
+            this.props.resetClearInput();
+        }
+        return true;
+    }
+
     render() {
         return (
             <View>
