@@ -80,8 +80,18 @@ class AcronymInput extends React.Component {
         )
     }
 
-    onChange(acronym, context,meaning) {
-        this.setState({acronym: acronym,context: context,meaning: meaning});
+	format(str, n) {
+	    var ret = [];
+	    var i;
+	    var len;
+
+	    for(i = 0, len = str.length; i < len; i += n) {
+	       ret.push(str.substr(i, n))
+	    }
+	    return ret
+	};
+
+    onChange(acronym, context, meaning, description) {
         console.log(acronym.length);
         console.log(this.state.acronym.length);
 
@@ -129,6 +139,17 @@ class AcronymInput extends React.Component {
 			}
 
 		}
+
+        this.setState({acronym: acronym, context: context, meaning: meaning, description: description});
+
+        if (this.props.meaningInput) {
+            this.props.onChange(this.state.acronym, this.state.context, this.state.meaning, this.state.description);
+        } else {
+            this.props.onChange(this.state.acronym, this.state.context);
+        }
+
+
+
     }
 }
 
