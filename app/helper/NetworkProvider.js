@@ -17,31 +17,43 @@ class NetworkProvider {
     }
 
 	static netRequest(url, method, data){
-		// Generate the paramters
-		let parameters = {
-			method: method,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+		if(method === 'GET'){
+			return fetch(url, {
+				method: method,
+				headers: {
+	                'Accept': 'application/json',
+	                'Content-Type': 'application/json'
+	            },
+			}).then((response) => {
+				console.log(response);
+				return response.json();
+			}).then((json) => {
+				console.log(json);
+				return json;
+			}).catch((error) => {
+				console.log("Error");
+				console.error(error);
+			});
+		}else{
+			return fetch(url, {
+				method: method,
+				headers: {
+	                'Accept': 'application/json',
+	                'Content-Type': 'application/json'
+	            },
+				body: JSON.stringify(data)
+			}).then((response) => {
+				console.log(response);
+				return response.json();
+			}).then((json) => {
+				console.log(json);
+				return json;
+			}).catch((error) => {
+				console.log("Error");
+				console.error(error);
+			});
 		}
 
-		if(data){
-			parameters.body = JSON.stringify(data);
-		}
-
-		return fetch(url, {
-			parameters
-		}).then((response) => {
-			console.log(response);
-			return response.json();
-		}).then((json) => {
-			console.log(json);
-			return json;
-		}).catch((error) => {
-			console.log("Error");
-			console.error(error);
-		});
 	}
 }
 
