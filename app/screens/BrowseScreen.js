@@ -5,7 +5,10 @@ import {
     Text,
     View,
     Button,
-    ListView
+    ListView,
+    ScrollView,
+    Dimensions,
+	TouchableOpacity
 } from 'react-native'
 
 import Config from 'react-native-config'
