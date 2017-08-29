@@ -15,7 +15,9 @@ class AcronymInput extends React.Component {
     state = {
         acronym: "",
         context: "",
-		meaning: "",
+        meaning: "",
+        description: "",
+		autocomplete:"",
     };
 
     componentWillMount() {}
