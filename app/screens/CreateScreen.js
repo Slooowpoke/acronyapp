@@ -14,7 +14,6 @@ import Config from 'react-native-config'
 
 import AcronymInput from '../components/AcronymInput'
 
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 class CreateScreen extends React.Component {

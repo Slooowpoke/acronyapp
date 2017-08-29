@@ -17,7 +17,6 @@ import NP from '../helper/NetworkProvider'
 
 import AcronymInput from '../components/AcronymInput'
 
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 import Suggestions from '../components/Suggestions'
