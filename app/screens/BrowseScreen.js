@@ -20,18 +20,19 @@ import Footer from '../components/Footer'
 import Suggestions from '../components/Suggestions'
 
 class BrowseScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Browse',
-        header: null
-    };
-
-    state = {
-        data: null,
-        requestTimeout: null
-    }
-
-    constructor() {
-        super();
+	static navigationOptions = ({ navigation }) => {
+		const {state, setParams, navigate} = navigation;
+		return {
+			headerRight: (
+				<TouchableOpacity onPress={() => navigate('Options')}>
+					<Icon name="ios-options" style={{marginRight:20}} size={30} color='#000'/>
+				</TouchableOpacity>
+			),
+			tabBarIcon: ({tintColor, focused}) => (<Icon name="ios-eye" size={30} color={focused ? "#ddd": "#eee"} />),
+			showIcon: true,
+			showLabel: false,
+		}
+	};
     }
 
     componentWillMount() {
@@ -40,8 +41,6 @@ class BrowseScreen extends React.Component {
 
     render() {
         return (
-            <View>
-                <Header/>
 
                 <AcronymInput onChange={this.onInputChange.bind(this)}/>
 

@@ -9,11 +9,19 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 class CreateScreen extends React.Component {
-	static navigationOptions = {
-		title: 'Create',
-		header: null,
-		tabBarPosition: 'bottom'
-	};
+    static navigationOptions = ({ navigation }) => {
+		const {state, setParams, navigate} = navigation;
+		return {
+			headerRight: (
+				<TouchableOpacity onPress={() => navigate('Options')}>
+					<Icon name="ios-options" style={{marginRight:20}} size={30} color='#000'/>
+				</TouchableOpacity>
+			),
+			tabBarIcon: ({tintColor, focused}) => (<Icon name="ios-create" size={30} color={focused ? "#ddd" : "#eee"}/>),
+			showIcon: true,
+			showLabel: false,
+		}
+    };
 
 	state = {
 		acronym:'',
@@ -24,8 +32,6 @@ class CreateScreen extends React.Component {
 
     render() {
         return (
-            <View>
-				<Header />
 
 				<AcronymInput onChange={this.onInputChange.bind(this)} meaningInput={true}/>
 
