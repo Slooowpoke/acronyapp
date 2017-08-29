@@ -112,6 +112,21 @@ class Suggestions extends React.Component {
             </View>
         );
     }
+
+	renderInProgress(){
+
+		if(this.props.acronym && this.props.acronym.trim() != '' && this.props.acronym.length > 2
+			&& this.props.context && this.props.context.trim() != '' && this.props.context.length > 2){
+			return(
+				<Progress.Circle size={40} indeterminate={true} style={{alignSelf:'center',marginTop:20}} />
+			);
+		}else{
+			return(
+				<Text style={{fontFamily: 'Ubuntu',textAlign:'center', fontSize:11}}>( Start by typing in an acronym and context. )</Text>
+			);
+		}
+
+	}
 }
 
 export default Suggestions;
