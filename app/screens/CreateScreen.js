@@ -16,6 +16,10 @@ import AcronymInput from '../components/AcronymInput'
 
 import Footer from '../components/Footer'
 
+
+import Icon from 'react-native-vector-icons/Ionicons';
+const {width, height} = Dimensions.get('window');
+
 class CreateScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
 		const {state, setParams, navigate} = navigation;

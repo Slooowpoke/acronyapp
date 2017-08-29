@@ -20,7 +20,9 @@ import AcronymInput from '../components/AcronymInput'
 import Footer from '../components/Footer'
 
 import Suggestions from '../components/Suggestions'
+const {width, height} = Dimensions.get('window');
 
+import Icon from 'react-native-vector-icons/Ionicons';
 class BrowseScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => {
 		const {state, setParams, navigate} = navigation;
