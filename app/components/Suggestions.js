@@ -15,6 +15,14 @@ import NP from '../helper/NetworkProvider'
 class Suggestions extends React.Component {
 
     state = {data:null};
+    _renderHeader(section) {
+        return (
+            <View style={styles.suggestion}>
+                <Text style={styles.headerText}>{section.title}</Text>
+				<Icon name="ios-arrow-down-outline" size={30} color="#000" />
+            </View>
+        );
+    }
 
     componentWillMount() {
 		// Fetch the data
@@ -69,11 +77,9 @@ class Suggestions extends React.Component {
     render() {
         return (
             <View>
-                <Text>Suggestions</Text>
-				<Text>Horizontal ruling to go here.</Text>
-				{this.state.data != null
-					? (<ListView dataSource={this.state.data} renderRow={(item) => <Text>{item.acronym}</Text>}/>)
-					: <Text></Text>}
+                <View style={styles.header}>
+                    <Text style={{	fontFamily: 'Ubuntu',}}>Suggestions</Text>
+                </View>
             </View>
         );
     }
