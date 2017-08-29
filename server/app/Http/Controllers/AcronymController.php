@@ -37,8 +37,9 @@ class AcronymController extends Controller{
 
 		// Validate the acronym before saving it
 		$validator = Validator::make($request->all(), [
-		   'acronym' => 'required|string|max:255',
+		   'acronym' => 'required|string|max:25',
 		   'meaning' => 'required|string|max:255',
+		   'context' => 'required|string|max:100',
 		   'description' => 'required|string|max:512',
 		   'industry[*]name' => 'required|string|max:255',
 		]);
@@ -61,6 +62,7 @@ class AcronymController extends Controller{
 		$acronym = Acronym::create([
             'acronym' => $request->input('acronym'),
             'meaning' => $request->input('meaning'),
+			'context' => $request->input('context'),
             'description' => $request->input('description'),
             'popularity' => 0,
 			'safe' => 0,
@@ -89,7 +91,7 @@ class AcronymController extends Controller{
 
 			$industryModels->push($industryModel);
 		}
-		die();
+
     	return response()->json(['acronym' => $acronym,'industries' => $industryModels]);
 	}
 
