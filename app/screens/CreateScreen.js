@@ -20,6 +20,7 @@ import NP from '../helper/NetworkProvider'
 
 import Icon from 'react-native-vector-icons/Ionicons';
 const {width, height} = Dimensions.get('window');
+import { NavigationActions } from 'react-navigation'
 
 class CreateScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -64,6 +65,12 @@ class CreateScreen extends React.Component {
     }
 
     saveAcronym() {
+
+        this.props.navigation.dispatch(NavigationActions.navigate({
+          routeName: 'Notification',
+          params: {text:"yo"},
+        }))
+
         // We can only do this if all the data is here
         if (this.state.meaning && this.state.context && this.state.acronym && this.state.description) {
 
@@ -86,10 +93,14 @@ class CreateScreen extends React.Component {
 
                 // After we have saved the acronym we can do fun things here.
                 // Such as showing a toast
-
                 this.setState({clearInput: true});
 
             });
+
+            this.props.navigation.dispatch(NavigationActions.navigate({
+              routeName: 'Notification',
+              params: {text:"yo"},
+            }))
 
         }
     }
