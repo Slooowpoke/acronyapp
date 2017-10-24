@@ -26,7 +26,24 @@ class NetworkProvider {
 	            },
 			}).then((response) => {
 				console.log(response);
-				return response.json();
+				
+				if (response.ok) {
+                   return response.json();
+               } else {
+                   // If there is an error, parse it to the catch
+                   var contentType = response.headers.get("content-type");
+
+                   if (contentType && contentType.indexOf("application/json") !== -1) {
+                       return response.json().then(err => {
+                           throw err;
+                       });
+                   } else {
+                       return response.text().then(err => {
+                           throw err;
+                       });
+                   }
+               }
+
 			}).then((json) => {
 				console.log(json);
 				return json;
