@@ -14,15 +14,14 @@ import Config from 'react-native-config'
 
 // Import our navigation
 
-import {StackNavigator, TabNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator, NavigationActions} from 'react-navigation';
 
 // Import our screens
 
 import BrowseScreen from './screens/BrowseScreen';
 import OptionScreen from './screens/OptionScreen';
 import CreateScreen from './screens/CreateScreen';
-
-import StatusBarAlert from 'react-native-statusbar-alert'
+import NotificationScreen from './screens/NotificationScreen';
 
 // Declare some globals, TODO check if these globals are pulled through or whether they have to be in the react instance first
 global.dimensions = {
@@ -52,52 +51,38 @@ const ApplicationNavigator = StackNavigator({
     },
     Options: {
         screen: OptionScreen
+    },
+    Notification: {
+        screen: NotificationScreen
     }
 });
 
 class App extends React.Component {
 	componentWillMount(){
-		global.alerts = [];
-		global.alerts.push({message: "Hello, app has begun.", visibility:true});
+		global.alert = {visibility: true, message: "App has begun."}
 		this.setState({alerts: global.alerts});
-	}
 
-    someEvent() {
-        // call navigate for AppNavigator here:
-        this.navigator && this.navigator.dispatch({type: 'Navigate', routeName, params});
-    }
+		global.industries = [];
+		global.industries.push("General");
+	}
 
 	constructor(props) {
         super(props)
 
         this.state = {
-            alerts:global.alerts,
+            alert:global.alert,
         }
     }
+
     render() {
         return (
             <View style={{flex:1}}>
-				<StatusBarAlert
-					visible={global.alerts[0].visibility}
-					message={global.alerts[0].message}
-					backgroundColor="#3CC29E"
-					color="white"
-					onPress={() => this.closeAlert()}
-					statusbarHeight={global.alerts[0].visibility ? 20 : 0}/>
                 <ApplicationNavigator ref={nav => {
                     this.navigator = nav;
-                }}/>
+                }} />
             </View>
-
         );
     }
-
-	closeAlert(){
-		let temp = this.state.alerts;
-		temp[0].visibility = false;
-		this.setState({alerts: temp});
-		global.alerts = temp;
-	}
 }
 
 AppRegistry.registerComponent('DemoProject', () => App);
