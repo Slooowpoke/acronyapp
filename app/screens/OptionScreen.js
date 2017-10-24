@@ -20,10 +20,7 @@ class OptionScreen extends React.Component {
 
 	componentWillMount(){
 		console.log(global.dimensions);
-		if(global.industries == null){
-			global.industries = [];
-			global.industries.push('General');
-		}
+
 		this.setState({industries: global.industries});
 
 	}
