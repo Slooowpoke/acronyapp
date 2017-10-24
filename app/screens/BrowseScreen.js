@@ -41,7 +41,7 @@ class BrowseScreen extends React.Component {
     constructor(props) {
         super(props)
 		global.dimensions = {width, height} = Dimensions.get('window');
-
+        console.log(this.props.navigation);
         this.state = {
             data: null
         }
@@ -67,10 +67,17 @@ class BrowseScreen extends React.Component {
     }
 
     onInputChange(acronym, context) {
+        
         // Search for context and acronym here
         console.log(acronym);
         console.log(context);
         console.log("---");
+        this.setState({
+            acronym: acronym,
+            context: context
+        }, () => {
+            console.log(`state: ${this.state}, value: ${acronym}`);
+        });
     }
 }
 
